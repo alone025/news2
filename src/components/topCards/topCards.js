@@ -56,7 +56,7 @@ const TopCards = () => {
 						<p className="text-[#252525] text-[15px] georama font-normal">
 							{articles[0]?.description.slice(0, 50)}
 						</p>
-					</div>
+					</div>	
 				</Link>
 			</div>
 
@@ -80,7 +80,7 @@ const TopCards = () => {
 								width={650}
 								height={400}
 								alt="tramp"
-								className="w-full h-full object-cover"
+								className="w-full h-[295px] object-cover"
 							/>
 						</div>
 					</div>
