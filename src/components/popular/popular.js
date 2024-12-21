@@ -9,7 +9,7 @@ const Popular = () => {
 		const loadArticles = async () => {
 			const data = await fetchPosts();
 			const filterData = data?.filter(
-				(cke) => cke.category._id === "67607b4165e56376ede198af"
+				(cke) => cke.category.name === "Популярные"
 			);
 			setArticles(filterData);
 		};

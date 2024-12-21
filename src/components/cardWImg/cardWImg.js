@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const CardWImg = ({ imgN, data }) => {
 	return (
-		<Link href={`/news?post=${data._id}`}>
+		<Link href={`/news/${data._id}`}>
 			<div className="relative w-full lg:max-w-[390px] h-max min-h-[340px]">
 				<div className="bg-rgb-black absolute h-full w-full left-0 top-0"></div>
 				<Image

@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export const PopularCard = ({ data }) => {
 	return (
-		<Link href={`/news?post=${data?._id}`}>
+		<Link href={`/news/${data?._id}`}>
 			<div className="py-6 flex flex-col md:flex-row gap-4">
 				<div className="min-w-[140px]">
 					<Image
