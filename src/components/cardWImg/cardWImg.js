@@ -11,10 +11,10 @@ const CardWImg = ({ imgN, data }) => {
 			<div className="relative w-full lg:max-w-[390px] h-max min-h-[340px]">
 				<div className="bg-rgb-black absolute h-full w-full left-0 top-0"></div>
 				<Image
-					src={`${baseUrl}/photos/${imgN}`}
+					src={data?.image ? `${baseUrl}/photos/${data.image}` : '/placeholder.jpg'}
 					width={650}
 					height={400}
-					alt="Картинка"
+					alt={data?.title || "News image"}
 					className="lg:max-w-[390px] z-10 rounded-md w-full h-full min-h-[340px] object-cover"
 				/>
 

@@ -4,12 +4,14 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**",
+        hostname: "black-wallet.uz",
+        pathname: '/photos/**',
       },
     ],
+    unoptimized: true,
   },
-  // output: 'export',
   trailingSlash: false,
+  output: 'export',
 };
 
 export default nextConfig;

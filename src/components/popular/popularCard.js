@@ -11,8 +11,8 @@ export const PopularCard = ({ data }) => {
 			<div className="py-6 flex flex-col md:flex-row gap-4">
 				<div className="min-w-[140px]">
 					<Image
-						src={`${baseUrl}/photos/${data?.image}`}
-						alt="img"
+						src={data?.image ? `${baseUrl}/photos/${data.image}` : '/placeholder.jpg'}
+						alt={data?.title || "News image"}
 						width={300}
 						height={300}
 						className="w-[150px] rounded-md"
