@@ -40,6 +40,8 @@ export default function MainPage() {
 		// Initialize search state from URL on page load
 		updateSearchFromUrl();
 
+		localStorage.setItem("category", "Главная");
+		localStorage.setItem("categoryId", "glavniy");
 
 		setTimeout(() => {
 			setLoading(false)
