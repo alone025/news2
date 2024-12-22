@@ -1,6 +1,5 @@
 import { baseUrl, fetchPost, fetchPosts } from "@/utils/api";
 import PostContent from "@/components/post/PostContent";
-import Head from "next/head";
 
 // Generate static paths
 export async function generateStaticParams() {
@@ -10,23 +9,47 @@ export async function generateStaticParams() {
     }));
 }
 
+// Generate metadata for the page
+export async function generateMetadata({ params }) {
+    const { slug } = params;
+    const post = await fetchPost(slug);
+
+    if (!post) {
+        return {
+            title: "Post Not Found",
+            description: "The requested post could not be found.",
+        };
+    }
+
+    return {
+        title: post.title,
+        description: post.subtitle,
+        openGraph: {
+            title: post.title,
+            description: post.subtitle,
+            images: [
+                {
+                    url: `${baseUrl}/photos/${post.image}`,
+                    alt: post.title,
+                },
+            ],
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: post.title,
+            description: post.subtitle,
+            images: [`${baseUrl}/photos/${post.image}`],
+        },
+    };
+}
+
 // Server component
 export default async function PostPage({ params }) {
     const { slug } = params;
     const post = await fetchPost(slug);
 
+
     return <>
-        <Head>
-            <title>{post.title}</title>
-            <meta name="description" content={post?.subtitle} />
-            <meta property="og:title" content={post?.title} />
-            <meta property="og:description" content={post?.subtitle} />
-            <meta property="og:image" content={`${baseUrl}/photos/${post?.image}`} />
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:title" content={post?.title} />
-            <meta name="twitter:description" content={post?.subtitle} />
-            <meta name="twitter:image" content={`${baseUrl}/photos/${post?.image}`} />
-        </Head>
         <PostContent initialData={post} slug={slug} />
     </>;
 }
