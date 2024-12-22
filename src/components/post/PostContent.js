@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { baseUrl, fetchPost } from "@/utils/api";
 import { formatDateDDMMYYYY } from "@/utils/formatData";
-import Head from "next/head";
 
 export default function PostContent({ initialData, slug }) {
 	const [dt, setDT] = useState(initialData);
@@ -33,32 +32,6 @@ export default function PostContent({ initialData, slug }) {
 
 	return (
 		<>
-			<Head>
-				<title>{dt?.title || "Loading..."}</title>
-
-				{/* {dt?.image && (
-                    <link
-                        rel="icon"
-                        href={`${baseUrl}/photos/${dt.image}`}
-                        type="image/jpg"
-                    />
-                )}
-         
-                    <link
-                        rel="favicon"
-                        href={`${baseUrl}/photos/${dt?.image}`}
-                        type="image/jpg"
-                    />
-            
-
-                    <link
-                        rel="icon"
-                        type="image/x-icon" 
-                        href={`${baseUrl}/photos/${dt?.image}`}
-                    /> */}
-
-				<desc>{dt?.subtitle}</desc>
-			</Head>
 			<div className="pb-10 min-h-screen">
 				<div className="relative w-full">
 					<Image
