@@ -3,11 +3,17 @@ import React from "react";
 import img from "../../../public/osmon.svg";
 import { formatDate } from "@/utils/formatData";
 import { baseUrl } from "@/utils/api";
-import Link from "next/link";
 
 export const PopularCard = ({ data }) => {
+
+	const handleNavigate = (id) => {
+		if (typeof window !== 'undefined') {
+		  window.open(`/news/${id}`, '_blank');
+		}
+	  };
+
 	return (
-		<Link href={`/news/${data?._id}`}>
+		<div className="cursor-pointer" onClick={() => handleNavigate(data._id)}>
 			<div className="py-6 flex flex-col md:flex-row gap-4">
 				<div className="min-w-[140px]">
 					<Image
@@ -41,6 +47,6 @@ export const PopularCard = ({ data }) => {
 					</div>
 				</div>
 			</div>
-		</Link>
+		</div>
 	);
 };

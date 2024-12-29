@@ -3,11 +3,15 @@ import img from "../../../public/hindi.jpg";
 import Image from "next/image";
 import { baseUrl } from "@/utils/api";
 import { formatDateToRussian } from "@/utils/formatData";
-import Link from "next/link";
 
 const CardWImg = ({ imgN, data }) => {
+	const handleNavigate = (id) => {
+		if (typeof window !== 'undefined') {
+		  window.open(`/news/${id}`, '_blank');
+		}
+	  };
 	return (
-		<Link href={`/news/${data._id}`}>
+		<div className="cursor-pointer" onClick={() => handleNavigate(data._id)} >
 			<div className="relative w-full lg:max-w-[390px] h-max min-h-[340px]">
 				<div className="bg-rgb-black absolute h-full w-full left-0 top-0"></div>
 				<Image
@@ -33,7 +37,7 @@ const CardWImg = ({ imgN, data }) => {
 					</p>
 				</div>
 			</div>
-		</Link>
+		</div>
 	);
 };
 

@@ -9,7 +9,6 @@ const Home = () => {
 
 	const updateSearchFromUrl = () => {
 		if (typeof window !== "undefined") {
-			// Ensure we're in a browser environment
 			const searchParams = new URLSearchParams(window.location.search);
 			const searchQuery = searchParams.get("search") || "";
 			setSearch(searchQuery);
@@ -17,7 +16,7 @@ const Home = () => {
 	};
 
 	useEffect(() => {
-		// Initialize search state from URL on page load
+		
 		updateSearchFromUrl();
 	});
 

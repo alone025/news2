@@ -4,7 +4,8 @@ import img2 from "../../../public/tr3.svg";
 import Image from "next/image";
 import { baseUrl, fetchPosts } from "@/utils/api";
 import { formatTime } from "@/utils/formatData";
-import Link from "next/link";
+
+
 
 const TopCards = () => {
 	const [articles, setArticles] = useState([]);
@@ -19,10 +20,16 @@ const TopCards = () => {
 		loadArticles();
 	}, []);
 
+	const handleNavigate = (id) => {
+		if (typeof window !== 'undefined') {
+		  window.open(`/news/${id}`, '_blank');
+		}
+	  };
+
 	return (
 		<div className="bg-white flex flex-col md:flex-row pb-6">
 			<div className="p-4 w-full flex flex-col">
-				<Link href={`/news/${articles[0]?._id}`}>
+				<div className="cursor-pointer" onClick={() => handleNavigate(articles[0]?._id)}>
 					<div className="relative h-full">
 						<div className="bg-rgb-black absolute h-full w-full left-0 top-0"></div>
 						<div className="h-full">
@@ -46,9 +53,9 @@ const TopCards = () => {
 							</p>
 						</div>
 					</div>
-				</Link>
+				</div>
 
-				<Link href={`/news/${articles[0]?._id}`}>
+				<div className="cursor-pointer" onClick={() => handleNavigate(articles[0]?._id)}>
 					<div className="mt-2 ml-2 flex flex-col gap-[2px]">
 						<p className="georama font-bold text-[17px] text-[#000]">
 							{articles[0]?.subtitle}
@@ -57,11 +64,11 @@ const TopCards = () => {
 							{articles[0]?.description.slice(0, 50)}
 						</p>
 					</div>	
-				</Link>
+				</div>
 			</div>
 
 			<div className="w-full relative">
-				<Link href={`/news/${articles[1]?._id}`}>
+				<div className="cursor-pointer" onClick={() => handleNavigate(articles[0]?._id)}>
 					<div className="tope-c bg-[#1A1A1A] pt-0 p-6 flex gap-4 flex-col-reverse lg:flex-row">
 						<div className="w-[180px]">
 							<h4 className="georama max-w-[296px] mt-2 hover:cursor-pointer transition-all hover:underline text-lg md:text-xl font-bold text-[#F7F7F4]  bottom-2 md:bottom-4 left-2 md:left-4 w-full">
@@ -84,9 +91,9 @@ const TopCards = () => {
 							/>
 						</div>
 					</div>
-				</Link>
+				</div>
 
-				<Link href={`/news/${articles[2]?._id}`}>
+				<div className="cursor-pointer" onClick={() => handleNavigate(articles[0]?._id)}>
 					<div className="mt-[15px] pl-6 md:pl-0 pr-6">
 						<div className="flex flex-col gap-1 mb-[10px] pr-3">
 							<h3 className="text-xl transition-all hover:cursor-pointer hover:text-[#04594D] georama font-bold text-[#000000]">
@@ -107,7 +114,7 @@ const TopCards = () => {
 							{articles[2]?.description.slice(0, 50)}
 						</p>
 					</div>
-				</Link>
+				</div>
 			</div>
 		</div>
 	);

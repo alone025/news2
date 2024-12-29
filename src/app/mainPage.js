@@ -4,7 +4,6 @@ import Latest from "@/components/latest/latest";
 import Loader from "@/components/loader";
 import Popular from "@/components/popular/popular";
 import TopCards from "@/components/topCards/topCards";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function MainPage() {
